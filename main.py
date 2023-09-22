@@ -73,22 +73,16 @@ response = openai.ChatCompletion.create(
 print(response)
 
 
-
-
-
-
-
-
- class Email(BaseModel):
+class Email(BaseModel):
      from_email: str
      content: str
 
- @app.get("/")
- def read_root():
+@app.get("/")
+def read_root():
      return {"Hello": "World"}
 
- @app.post("/")
- def analyse_email(email: Email):
+@app.post("/")
+def analyse_email(email: Email):
      content = email.content
      query = f"Please extract key information from this email: {content} "
 
