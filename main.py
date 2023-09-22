@@ -20,13 +20,13 @@ function_descriptions = [
                     "type": "string",
                     "description": "the name of the company that sent the email"
                 },                                        
-                "product": {
+                "project": {
                     "type": "string",
-                    "description": "Try to identify which product the client is interested in, if any"
+                    "description": "Try to identify which project the client is interested in, if any"
                 },
-                "amount":{
+                "draw":{
                     "type": "string",
-                    "description": "Try to identify the amount of products the client wants to purchase, if any"
+                    "description": "Try to identify the draw the client wants to address, if any"
                 },
                 "category": {
                     "type": "string",
@@ -41,7 +41,7 @@ function_descriptions = [
                     "description": "Try to give a priority score to this email based on how likely this email will leads to a good business opportunity, from 0 to 10; 10 most important"
                 },
             },
-            "required": ["companyName", "amount", "product", "priority", "category", "nextStep"]
+            "required": ["companyName", "project", "draw", "priority", "category", "nextStep"]
         }
     }
 ]
@@ -98,15 +98,15 @@ def analyse_email(email: Email):
      arguments = response.choices[0]["message"]["function_call"]["arguments"]
      companyName = eval(arguments).get("companyName")
      priority = eval(arguments).get("priority")
-     product = eval(arguments).get("product")
-     amount = eval(arguments).get("amount")
+     draw = eval(arguments).get("draw")
+     project = eval(arguments).get("project")
      category = eval(arguments).get("category")
      nextStep = eval(arguments).get("nextStep")
 
      return {
          "companyName": companyName,
-         "product": product,
-         "amount": amount,
+         "draw": draw,
+         "project": project,
          "priority": priority,
          "category": category,
          "nextStep": nextStep
