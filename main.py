@@ -22,15 +22,15 @@ function_descriptions = [
                 },                                        
                 "project": {
                     "type": "string",
-                    "description": "Try to identify which project the client is interested in, if any"
+                    "description": "Try to identify which project the client is referring to, if any"
                 },
                 "draw":{
                     "type": "string",
-                    "description": "Try to identify the draw the client wants to address, if any"
+                    "description": "Try to identify the draw number the client is referring to, if any"
                 },
                 "category": {
                     "type": "string",
-                    "description": "Try to categorise this email into categories like those: 1. Sales 2. customer support; 3. consulting; 4. partnership; etc."
+                    "description": "Try to categorise this email into categories like those: 1. New Order 2. Quick Question; 3. Sending Thanks; 4. Checking on Payment; etc."
                 },
                 "nextStep":{
                     "type": "string",
@@ -38,7 +38,7 @@ function_descriptions = [
                 },
                 "priority": {
                     "type": "string",
-                    "description": "Try to give a priority score to this email based on how likely this email will leads to a good business opportunity, from 0 to 10; 10 most important"
+                    "description": "Try to give a priority score to this email based on how quickly it should be responded to, from 0 to 5; 5 most important"
                 },
             },
             "required": ["companyName", "project", "draw", "priority", "category", "nextStep"]
