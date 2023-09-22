@@ -64,7 +64,7 @@ prompt = f"Please extract key information from this email: {email} "
 message = [{"role": "user", "content": prompt}]
 
 response = openai.ChatCompletion.create(
-    model="gpt-4-0613",
+    model="gpt-3.5-turbo-0613",
     messages=message,
     functions = function_descriptions,
     function_call="auto"
@@ -95,7 +95,7 @@ print(response)
      messages = [{"role": "user", "content": query}]
 
      response = openai.ChatCompletion.create(
-         model="gpt-4-0613",
+         model="gpt-3.5-turbo-0613",
          messages=messages,
          functions = function_descriptions,
          function_call="auto"
