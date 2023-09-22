@@ -79,42 +79,42 @@ print(response)
 
 
 
-# class Email(BaseModel):
-#     from_email: str
-#     content: str
+ class Email(BaseModel):
+     from_email: str
+     content: str
 
-# @app.get("/")
-# def read_root():
-#     return {"Hello": "World"}
+ @app.get("/")
+ def read_root():
+     return {"Hello": "World"}
 
-# @app.post("/")
-# def analyse_email(email: Email):
-#     content = email.content
-#     query = f"Please extract key information from this email: {content} "
+ @app.post("/")
+ def analyse_email(email: Email):
+     content = email.content
+     query = f"Please extract key information from this email: {content} "
 
-#     messages = [{"role": "user", "content": query}]
+     messages = [{"role": "user", "content": query}]
 
-#     response = openai.ChatCompletion.create(
-#         model="gpt-4-0613",
-#         messages=messages,
-#         functions = function_descriptions,
-#         function_call="auto"
-#     )
+     response = openai.ChatCompletion.create(
+         model="gpt-4-0613",
+         messages=messages,
+         functions = function_descriptions,
+         function_call="auto"
+     )
 
-#     arguments = response.choices[0]["message"]["function_call"]["arguments"]
-#     companyName = eval(arguments).get("companyName")
-#     priority = eval(arguments).get("priority")
-#     product = eval(arguments).get("product")
-#     amount = eval(arguments).get("amount")
-#     category = eval(arguments).get("category")
-#     nextStep = eval(arguments).get("nextStep")
+     arguments = response.choices[0]["message"]["function_call"]["arguments"]
+     companyName = eval(arguments).get("companyName")
+     priority = eval(arguments).get("priority")
+     product = eval(arguments).get("product")
+     amount = eval(arguments).get("amount")
+     category = eval(arguments).get("category")
+     nextStep = eval(arguments).get("nextStep")
 
-#     return {
-#         "companyName": companyName,
-#         "product": product,
-#         "amount": amount,
-#         "priority": priority,
-#         "category": category,
-#         "nextStep": nextStep
-#     }
+     return {
+         "companyName": companyName,
+         "product": product,
+         "amount": amount,
+         "priority": priority,
+         "category": category,
+         "nextStep": nextStep
+     }
 
