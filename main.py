@@ -20,17 +20,17 @@ function_descriptions = [
                     "type": "string",
                     "description": "the name of the company that sent the email"
                 },                                        
-                "project": {
+                "customer": {
                     "type": "string",
-                    "description": "Try to identify which project the client is referring to, if any"
+                    "description": "Try to identify the company is a law firm or bank, or note that is it unclear"
                 },
-                "draw":{
+                "summary":{
                     "type": "string",
-                    "description": "Try to identify the draw number the client is referring to, if any"
+                    "description": "Try to summarize the email"
                 },
-                "category": {
+                "interest": {
                     "type": "string",
-                    "description": "Try to categorise this email into categories like those: 1. New Order 2. Quick Question; 3. Sending Thanks; 4. Checking on Payment; etc."
+                    "description": "Try to categorise this email into an a level of interest for the product: 1. Very Interested; 2. Somewhat Interested; 3. Not Interested; 4. Unclear; etc."
                 },
                 "nextStep":{
                     "type": "string",
@@ -41,7 +41,7 @@ function_descriptions = [
                     "description": "Try to give a priority score to this email based on how quickly it should be responded to, from 0 to 5; 5 most important"
                 },
             },
-            "required": ["companyName", "project", "draw", "priority", "category", "nextStep"]
+            "required": ["companyName", "customer", "summary", "priority", "interest", "nextStep"]
         }
     }
 ]
@@ -97,18 +97,18 @@ def analyse_email(email: Email):
 
      arguments = response.choices[0]["message"]["function_call"]["arguments"]
      companyName = eval(arguments).get("companyName")
+     customer = eval(arguments).get("customer")
+     summary = eval(arguments).get("summary")
+     interest = eval(arguments).get("interest")
      priority = eval(arguments).get("priority")
-     draw = eval(arguments).get("draw")
-     project = eval(arguments).get("project")
-     category = eval(arguments).get("category")
      nextStep = eval(arguments).get("nextStep")
 
      return {
          "companyName": companyName,
-         "draw": draw,
-         "project": project,
+         "customer": customer,
+         "summary": summary,
          "priority": priority,
-         "category": category,
+         "interest": interest,
          "nextStep": nextStep
      }
 
